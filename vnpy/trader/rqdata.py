@@ -11,6 +11,7 @@ from rqdatac.share.errors import AuthenticationFailed
 from .setting import SETTINGS
 from .constant import Exchange, Interval
 from .object import BarData, HistoryRequest
+from .tushare import TushareClient
 
 
 INTERVAL_VT2RQ = {
@@ -194,4 +195,4 @@ class RqdataClient:
         return data
 
 
-rqdata_client = RqdataClient()
+rqdata_client = TushareClient()
