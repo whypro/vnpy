@@ -2,7 +2,6 @@
 Global setting of VN Trader.
 """
 
-from logging import CRITICAL
 from typing import Dict, Any
 from tzlocal import get_localzone
 
@@ -13,7 +12,7 @@ SETTINGS: Dict[str, Any] = {
     "font.size": 12,
 
     "log.active": True,
-    "log.level": CRITICAL,
+    "log.level": "CRITICAL",
     "log.console": True,
     "log.file": True,
 

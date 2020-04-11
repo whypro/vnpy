@@ -1,7 +1,6 @@
 import multiprocessing
 from time import sleep
 from datetime import datetime, time
-from logging import INFO
 
 from vnpy.event import EventEngine
 from vnpy.trader.setting import SETTINGS
@@ -13,7 +12,7 @@ from vnpy.app.cta_strategy.base import EVENT_CTA_LOG
 
 
 SETTINGS["log.active"] = True
-SETTINGS["log.level"] = INFO
+SETTINGS["log.level"] = "INFO"
 SETTINGS["log.console"] = True
 
 

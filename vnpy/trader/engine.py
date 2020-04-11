@@ -265,7 +265,7 @@ class LogEngine(BaseEngine):
         if not SETTINGS["log.active"]:
             return
 
-        self.level: int = SETTINGS["log.level"]
+        self.level: int = logging.getLevelName(SETTINGS["log.level"])
 
         self.logger: Logger = logging.getLogger("VN Trader")
         self.logger.setLevel(self.level)
