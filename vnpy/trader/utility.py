@@ -254,8 +254,12 @@ class BarGenerator:
             # Generate timestamp for bar data
             if self.interval == Interval.MINUTE:
                 dt = bar.datetime.replace(second=0, microsecond=0)
-            else:
+            elif self.interval == Interval.HOUR:
                 dt = bar.datetime.replace(minute=0, second=0, microsecond=0)
+            elif self.interval == Interval.DAILY:
+                dt = bar.datetime.replace(hour=0, minute=0, second=0, microsecond=0)
+            else:
+                dt = bar.datetime
 
             self.window_bar = BarData(
                 symbol=bar.symbol,
@@ -293,10 +297,15 @@ class BarGenerator:
                 # x-hour bar
                 else:
                     self.interval_count += 1
-
                     if not self.interval_count % self.window:
                         finished = True
                         self.interval_count = 0
+        elif self.interval == Interval.DAILY:
+            if self.last_bar and bar.datetime.day != self.last_bar.datetime.day:
+                self.interval_count += 1
+                if not self.interval_count % self.window:
+                    finished = True
+                    self.interval_count = 0
 
         if finished:
             self.on_window_bar(self.window_bar)
