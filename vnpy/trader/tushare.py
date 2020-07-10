@@ -81,11 +81,12 @@ class TushareClient:
                 asset_code = 'I'
             elif symbol.startswith('500') or symbol.startswith('550'):
                 asset_code = 'FD'
-            elif symbol.startswith('600') or symbol.startswith('601') or symbol.startswith('603'):
+            elif symbol.startswith('600') or symbol.startswith('601') or \
+                    symbol.startswith('603') or symbol.startswith('688') or symbol.startswith('900'):
                 asset_code = 'E'
         elif exchange == Exchange.SZSE:
             ts_code = f"{symbol}.SZ"
-            if symbol.startswith('00'):
+            if symbol.startswith('00') or symbol.startswith('200'):
                 asset_code = 'E'
             elif symbol.startswith('17') or symbol.startswith('18'):
                 asset_code = 'FD'
